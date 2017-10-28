@@ -9,7 +9,7 @@ services:
     links:
       - "mysql:mysql"
     volumes:
-      - "$PWD/_src/web:/var/www/html"
+      - "$PWD/src/web:/var/www/html"
       - "$PWD/web/files/php.ini:/etc/php.ini"
       - "$PWD/web/files/httpd.conf:/etc/httpd/conf/httpd.conf"
     command: httpd -DFOREGROUND
