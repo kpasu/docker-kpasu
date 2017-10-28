@@ -7,36 +7,12 @@ services:
     ports:
       - "80:80"
     links:
-      - "sbps:sbps"
-      - "mocky:mocky"
       - "mysql:mysql"
     volumes:
       - "$PWD/_src/web:/var/www/html"
       - "$PWD/web/files/php.ini:/etc/php.ini"
       - "$PWD/web/files/httpd.conf:/etc/httpd/conf/httpd.conf"
-      - "$PWD/web/files/rewrite_rule.conf:/etc/httpd/conf.d/rewrite_rule.conf"
     command: httpd -DFOREGROUND
-
-  # sbps
-  sbps:
-    build: ./sbps
-    ports:
-      - "8080:80"
-    volumes:
-      - "$PWD/_src/web:/var/www/html"
-      - "$PWD/sbps/files/php.ini:/etc/php.ini"
-      - "$PWD/sbps/files/httpd.conf:/etc/httpd/conf/httpd.conf"
-      - "$PWD/web/files/rewrite_rule.conf:/etc/httpd/conf.d/rewrite_rule.conf"
-    command: httpd -DFOREGROUND
-
-  # mocky
-  mocky:
-    build: ./mocky
-    ports:
-      - "8081:80"
-    volumes:
-      - "$PWD/_src/mocky:/var/www/html"
-    command: node /var/www/html/api.js
 
   # mysql
   mysql:
