@@ -2,6 +2,5 @@
 .DS_Store
 
 mysql/data
-src/web/*
 
 !.gitkeep
